@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "desafio brasilprev"
+version = "0.1.0"
+description = ""
+authors = ["Wesley Bruno"]
+readme = "README.md"
+package-mode = false
+
+[tool.poetry.dependencies]
+python = "^3.12"
+python-decouple = "^3.8"
+django = "^5.0.6"
+djangorestframework = "^3.15.1"
+psycopg2-binary = "^2.9.9"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

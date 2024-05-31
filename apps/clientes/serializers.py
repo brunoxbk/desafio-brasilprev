@@ -1,10 +1,10 @@
 from rest_framework import serializers
-from products.models import Product
+from apps.clientes.models import Cliente
 
 
 class ClienteSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Product
+        model = Cliente
         fields = [
             "pk",
             "cpf",

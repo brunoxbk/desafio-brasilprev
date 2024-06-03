@@ -11,6 +11,8 @@ class ClienteSerializer(serializers.ModelSerializer):
             "nome",
             "email",
             "dataDeNascimento",
+            'idade',
+            "genero",
             "rendaMensal",
             "created",
             "updated"

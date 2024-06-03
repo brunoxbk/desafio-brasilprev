@@ -1,18 +1,8 @@
 from django.db import models
 import uuid
-
+from django.utils import timezone
 
 class Produto(models.Model):
-
-    # "nome": "Brasilprev Longo Prazo",
-    # "susep": "15414900840201817",
-    # "expiracaoDeVenda": "2021-01-01T12:00:00.000Z",
-    # "valorMinimoAporteInicial": 1000.0, // valor mínimo de aporte no momento da contratação
-    # "valorMinimoAporteExtra": 100.0, // valor mínimo do aporte extra
-    # "idadeDeEntrada": 18, // idade mínima para comprar o produto
-    # "idadeDeSaida": 60, // idade máxima para começar a usufruir do benefício
-    # "carenciaInicialDeResgate": 60, // em dias - carência para realizar o primeiro resgate
-    # "carenciaEntreResgates": 30 // em dias - carência para realizar outro resgate após um resgate realizado.
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     nome = models.CharField("nome", max_length=120, blank=False, null=False)
@@ -27,6 +17,10 @@ class Produto(models.Model):
 
     created = models.DateTimeField("criado", auto_now_add=True)
     updated = models.DateTimeField("alterado", auto_now=True)
+
+    @property
+    def valido(self):
+        return timezone.now() < self.expiracaoDeVenda
 
     def __str__(self):
         return f"{self.nome}"

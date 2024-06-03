@@ -1,14 +1,9 @@
 from django.db import models
 import uuid
+from django.utils import timezone
+
 
 class Cliente(models.Model):
-
-    # "cpf": "45645645600",
-    # "nome": "José da Silva",
-    # "email": "jose@cliente.com",
-    # "dataDeNascimento": "2010-08-24T12:00:00.000Z",
-    # "genero": "Masculino",
-    # "rendaMensal": 2899.5
 
     class GeneroChoices(models.TextChoices):
         Masculino = "Masculino"
@@ -29,6 +24,10 @@ class Cliente(models.Model):
 
     created = models.DateTimeField("criado", auto_now_add=True)
     updated = models.DateTimeField("alterado", auto_now=True)
+
+    @property
+    def idade(self):
+        return timezone.now().year - self.dataDeNascimento.year
 
     def __str__(self):
         return f"{self.nome} - {self.cpf}"

@@ -6,11 +6,12 @@ class ProdutoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Produto
         fields = [
+            'pk',
             'nome',
             'susep',
             'expiracaoDeVenda',
+            'valorMinimoAporteInicial',
             'valorMinimoAporteExtra',
-            'rendaMensal',
             'idadeDeEntrada',
             'idadeDeSaida',
             'carenciaInicialDeResgate',

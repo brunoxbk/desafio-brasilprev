@@ -35,3 +35,19 @@
 
     docker compose build
     docker compose up
+
+## Documentação
+
+- [Swagger](http://localhost:8000/swagger/)
+
+## Testes
+
+    docker exec -it desafio_brasilprev-web-1 poetry run python manage.py test --pattern="*test*.py"
+
+## DRF
+
+- [Planos](http://localhost:8000/planos/)
+- [Produtos](http://localhost:8000/produtos/)
+- [Clientes](http://localhost:8000/clientes/)
+- [Aportes](http://localhost:8000/planos/aportes/)
+- [Resgates](http://localhost:8000/planos/aportes/)

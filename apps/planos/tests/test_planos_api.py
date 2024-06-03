@@ -331,15 +331,12 @@ class PlanoAPITest(TestCase):
             content_type='application/json'
         )
 
-        # print(response.json())
 
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
 
     def test_resgate_sem_carencia(self):
         date_obj = datetime.now() - timedelta(days=20)
-
-        print(date_obj.strftime('%Y-%m-%dT%H:%M:%S.%f')[:-3] + 'Z')
 
         response_plano = self.client.post(
             '/planos/',
@@ -370,8 +367,6 @@ class PlanoAPITest(TestCase):
 
     def test_resgate_com_carencia(self):
         date_obj = datetime.now() - timedelta(days=120)
-
-        print(date_obj.strftime('%Y-%m-%dT%H:%M:%S.%f')[:-3] + 'Z')
 
         response_plano = self.client.post(
             '/planos/',

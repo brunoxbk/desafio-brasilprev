@@ -42,7 +42,7 @@
 
 ## Testes
 
-    docker exec -it desafio_brasilprev-web-1 poetry run python manage.py test --pattern="*test*.py"
+    docker compose exec web poetry run python manage.py test --pattern="*test*.py"
 
 ## DRF
 

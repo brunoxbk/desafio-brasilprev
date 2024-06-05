@@ -61,14 +61,16 @@
 # Evidências de testes
 ![Evidência 01](static/evidencia_teste01.png "Evidência 01")
 
-![Evidência 01](https://drive.google.com/file/d/1Qb4arvq0NYhAyYhpgMb4qMXu-rIDH0Fb)
 
-![Evidência 02](https://drive.google.com/file/d/1ZVmBfg9_I4eEq4bQ0K0yjevhanz4sl2w)
+[![](https://markdown-videos-api.jorgenkh.no/youtube/8UNjDKrjlEI)](https://youtu.be/8UNjDKrjlEI)
+
+[![](https://markdown-videos-api.jorgenkh.no/youtube/hb8Szb8fiwE)](https://youtu.be/hb8Szb8fiwE)
+
 
 ## Swagger do projeto
 
 - [Swagger](http://localhost:8000/swagger/)
->>>>>>> 0fc8a49 (correções documentação)
+
 
 ## DRF
 

@@ -10,13 +10,13 @@ class ProdutoAPITest(TestCase):
         self.payload = {
             "nome": "Brasilprev Longo Prazo",
             "susep": "15414900840201816",
-            "expiracaoDeVenda": "2021-01-01T12:00:00.000Z",
-            "valorMinimoAporteInicial": 1000.0,
-            "valorMinimoAporteExtra": 100.0,
-            "idadeDeEntrada": 18,
-            "idadeDeSaida": 60,
-            "carenciaInicialDeResgate": 60,
-            "carenciaEntreResgates": 30
+            "expiracao_de_venda": "2021-01-01T12:00:00.000Z",
+            "valor_minimo_aporte_inicial": 1000.0,
+            "valor_minimo_aporte_extra": 100.0,
+            "idade_de_entrada": 18,
+            "idade_de_saida": 60,
+            "carencia_inicial_de_resgate": 60,
+            "carencia_entre_resgates": 30
         }
 
     def test_criar_produto(self):

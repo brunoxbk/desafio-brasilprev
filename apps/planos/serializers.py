@@ -6,15 +6,15 @@ from django.utils import timezone
 class PlanoSerializer(serializers.ModelSerializer):
 
     def validate(self, data):
-        if not data['idProduto'].valido:
-            raise serializers.ValidationError({"idProduto": "Produto com prazo expirado."})
+        if not data['produto'].valido:
+            raise serializers.ValidationError({"produto": "Produto com prazo expirado."})
 
-        if data['idProduto'].valorMinimoAporteInicial >= data['aporte']:
+        if data['produto'].valor_minimo_aporte_inicial >= data['aporte']:
             raise serializers.ValidationError({
-                "idProduto": f"Valor mínimo de aporte no momento da contratação: {data['idProduto'].valorMinimoAporteInicial}"})
+                "produto": f"Valor mínimo de aporte no momento da contratação: {data['produto'].valor_minimo_aporte_inicial}"})
 
-        if not data['idCliente'].idade >= data['idProduto'].idadeDeEntrada:
-            raise serializers.ValidationError({"idCliente": f"Idade mínima para comprar o produto: {data['idProduto'].idadeDeEntrada}."})
+        if not data['cliente'].idade >= data['produto'].idade_de_entrada:
+            raise serializers.ValidationError({"cliente": f"Idade mínima para comprar o produto: {data['produto'].idade_de_entrada}."})
 
         return data
 
@@ -22,28 +22,27 @@ class PlanoSerializer(serializers.ModelSerializer):
         model = Plano
         fields = [
             'id',
-            'idCliente',
-            'idProduto',
+            'cliente',
+            'produto',
             'aporte',
-            'dataDaContratacao',
-            'idadeDeAposentadoria',
+            'data_da_contratacao',
+            'idade_de_aposentadoria',
             'created',
             'updated'
         ]
 
-
 class AporteSerializer(serializers.ModelSerializer):
 
     def validate(self, data):
-        if not data['idPlano'].idProduto.valido:
-            raise serializers.ValidationError({"idProduto": "Produto com prazo expirado."})
+        if not data['plano'].produto.valido:
+            raise serializers.ValidationError({"produto": "Produto com prazo expirado."})
 
-        if not data['idPlano'].saldo > 0:
-            raise serializers.ValidationError({"idPlano": "Plano sem saldo."})
+        if not data['plano'].saldo > 0:
+            raise serializers.ValidationError({"plano": "Plano sem saldo."})
 
-        if data['idPlano'].idProduto.valorMinimoAporteExtra >= data['valorAporte']:
+        if data['plano'].produto.valor_minimo_aporte_extra >= data['valor_aporte']:
             raise serializers.ValidationError({
-                "idProduto": f"Valor mínimo de aporte extra: {data['idPlano'].idProduto.valorMinimoAporteExtra}"})
+                "produto": f"Valor mínimo de aporte extra: {data['plano'].produto.valor_minimo_aporte_extra}"})
 
         return data
 
@@ -51,9 +50,9 @@ class AporteSerializer(serializers.ModelSerializer):
         model = Aporte
         fields = [
             'id',
-            'idCliente',
-            'idPlano',
-            'valorAporte',
+            'cliente',
+            'plano',
+            'valor_aporte',
             'created',
             'updated'
         ]
@@ -62,13 +61,13 @@ class AporteSerializer(serializers.ModelSerializer):
 class ResgateSerializer(serializers.ModelSerializer):
 
     def validate(self, data):
-        if data['valorResgate'] > data['idPlano'].saldo:
+        if data['valor_resgate'] > data['plano'].saldo:
             raise serializers.ValidationError({
-                "idProduto": f"Valor de saldo do plano: {data['idPlano'].saldo}"})
+                "produto": f"Valor de saldo do plano: {data['plano'].saldo}"})
 
-        if data['idPlano'].proximo_resgate > timezone.now():
+        if data['plano'].proximo_resgate > timezone.now():
             raise serializers.ValidationError({
-                "idPlano": f"Data limite para o proximo resgate : {data['idPlano'].proximo_resgate.strftime('%Y-%m-%dT%H:%M')}"})
+                "plano": f"Data limite para o próximo resgate : {data['plano'].proximo_resgate.strftime('%Y-%m-%dT%H:%M')}"})
 
         return data
 
@@ -76,8 +75,8 @@ class ResgateSerializer(serializers.ModelSerializer):
         model = Resgate
         fields = [
             'id',
-            'idPlano',
-            'valorResgate',
+            'plano',
+            'valor_resgate',
             'created',
             'updated'
         ]

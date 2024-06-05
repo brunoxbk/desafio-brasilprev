@@ -11,9 +11,9 @@ class ClienteAPITest(TestCase):
             "cpf": "53862500004",
             "nome": "Tony Stark",
             "email": "tony@email.com",
-            "dataDeNascimento": "1986-01-01T12:00:00.000Z",
+            "data_de_nascimento": "1986-01-01T12:00:00.000Z",
             "genero": "Masculino",
-            "rendaMensal": 2899.5
+            "renda_mensal": 2899.5
         }
 
     def test_criar_cliente(self):

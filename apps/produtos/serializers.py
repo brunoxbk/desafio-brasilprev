@@ -9,12 +9,12 @@ class ProdutoSerializer(serializers.ModelSerializer):
             'pk',
             'nome',
             'susep',
-            'expiracaoDeVenda',
-            'valorMinimoAporteInicial',
-            'valorMinimoAporteExtra',
-            'idadeDeEntrada',
-            'idadeDeSaida',
-            'carenciaInicialDeResgate',
-            'carenciaEntreResgates'
+            'expiracao_de_venda',
+            'valor_minimo_aporte_inicial',
+            'valor_minimo_aporte_extra',
+            'idade_de_entrada',
+            'idade_de_saida',
+            'carencia_inicial_de_resgate',
+            'carencia_entre_resgates'
         ]
 

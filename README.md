@@ -11,10 +11,9 @@
 ## Stack que utilizei:
 
 - Docker
-- Python/Django
+- Python
+- Django
 - PostgreSQL
-- Scrapy
-- Celery
 - Django REST Framework
 
 ## Variáveis de ambiente
@@ -31,18 +30,45 @@
     RUN_PORT=8000
     RUN_HOST=0.0.0.0
 
-## Comandos
+## Instalação via Poetry
 
-    docker compose build
-    docker compose up
+- Duplicar o arquivo de variáveis de ambiente e renomealo para .env e configurar as variáveis locais
+	> cp .env.sample .env
 
-## Documentação
+- Instalar os requisitos
+	> poetry install
 
-- [Swagger](http://localhost:8000/swagger/)
+- Rodar as migrações para criar as tabelas no banco de dados
+	> poetry run python manage.py migrate
+
+- Subir o servidor local
+	> poetry run python manage.py runserver
+
+## Instalação via Docker
+
+- Fazer o build das imagens
+	> docker compose build
+
+- Subir os containers
+	> docker compose up
 
 ## Testes
+- Rodar testes com Poetry
+    > poetry run python manage.py test --pattern="*test*.py"
+- Rodar testes com Docker
+    > docker compose exec web poetry run python manage.py test --pattern="*test*.py"
 
-    docker compose exec web poetry run python manage.py test --pattern="*test*.py"
+# Evidências de testes
+![Evidência 01](static/evidencia_teste01.png "Evidência 01")
+
+![Evidência 01](https://drive.google.com/file/d/1Qb4arvq0NYhAyYhpgMb4qMXu-rIDH0Fb)
+
+![Evidência 02](https://drive.google.com/file/d/1ZVmBfg9_I4eEq4bQ0K0yjevhanz4sl2w)
+
+## Swagger do projeto
+
+- [Swagger](http://localhost:8000/swagger/)
+>>>>>>> 0fc8a49 (correções documentação)
 
 ## DRF
 

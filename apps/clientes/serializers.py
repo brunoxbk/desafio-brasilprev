@@ -10,10 +10,11 @@ class ClienteSerializer(serializers.ModelSerializer):
             "cpf",
             "nome",
             "email",
-            "dataDeNascimento",
+            "data_de_nascimento",
             'idade',
             "genero",
-            "rendaMensal",
+            "renda_mensal",
+            "idade",
             "created",
             "updated"
         ]
